@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: wildflyspringbootdemo 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wildflyspringbootdemo
+  template:
+    metadata:
+      labels:
+        app: wildflyspringbootdemo 
+    spec:
+      containers:
+        - name: wildflyspringbootdemo 
+          image: acrparveenkumar.azurecr.io/wildflyspringbootdemo
+          ports:
+          - containerPort: 8080
