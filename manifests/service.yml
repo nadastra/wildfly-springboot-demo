@@ -3,8 +3,9 @@ kind: Service
 metadata:
     name: wildflyspringbootdemo
 spec:
-    type: LoadBalancer
+    type: ClusterIP
     ports:
     - port: 8080 
+    - port: 9990
     selector:
         app: wildflyspringbootdemo
