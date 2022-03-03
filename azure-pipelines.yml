@@ -15,6 +15,7 @@ variables:
   imageRepository: 'wildflyspringbootdemo'
   containerRegistry: 'acrparveenkumar.azurecr.io'
   dockerfilePath: '**/Dockerfile'
+  pomFilePath: '$(Build.SourcesDirectory)/pom.xml'
   tag: '$(Build.BuildId)'
   imagePullSecret: 'acrparveenkumar4829e6b5-auth'
 
@@ -31,6 +32,15 @@ stages:
     pool:
       vmImage: $(vmImageName)
     steps:
+    - task: Maven@3
+      displayName: There will be no fighting in the war room
+      inputs:
+        mavenPomFile: $(pomFilePath)
+        mavenOptions: '-Xmx3072m'
+        javaHomeOption: 'JDKVersion'
+        jdkVersionOption: '1.8'
+        jdkArchitectureOption: 'x64'
+        goals: package 
     - task: Docker@2
       displayName: Build and push an image to container registry
       inputs:
