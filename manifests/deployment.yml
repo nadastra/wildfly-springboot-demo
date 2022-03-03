@@ -11,6 +11,11 @@ spec:
     metadata:
       labels:
         app: wildflyspringbootdemo 
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "wildflyspringbootdemo"
+        dapr.io/app-port: "8080"
+        dapr.io/config: tracing
     spec:
       containers:
         - name: wildflyspringbootdemo 
