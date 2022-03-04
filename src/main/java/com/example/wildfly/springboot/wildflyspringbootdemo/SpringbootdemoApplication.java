@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
+import java.util.Map;
 
 // Spring Boot 2.x
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
@@ -30,7 +31,7 @@ public class SpringbootdemoApplication extends SpringBootServletInitializer {
 class HelloController {
  
     @RequestMapping("/hello/{name}")
-    String hello(@PathVariable String name) {
+    Map<String, Object> hello(@PathVariable String name) {
         HashMap<String, Object> response = new HashMap<>();
         String echo = "Hi " + name + " !";
         response.put("message", echo);
