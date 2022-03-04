@@ -30,8 +30,10 @@ class HelloController {
  
     @RequestMapping("/hello/{name}")
     String hello(@PathVariable String name) {
- 
-        return "Hi " + name + " !";
+        HashMap<String, Object> response = new HashMap<>();
+        String echo = "Hi " + name + " !";
+        response.put("message", echo);
+        return response;
  
     }
 }
