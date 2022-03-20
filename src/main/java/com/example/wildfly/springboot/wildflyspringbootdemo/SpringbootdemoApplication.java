@@ -6,9 +6,11 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestHeader;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Base64;
+import com.google.gson.*;
 
 // Spring Boot 2.x
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
