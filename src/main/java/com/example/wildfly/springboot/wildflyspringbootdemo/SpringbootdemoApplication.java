@@ -39,7 +39,11 @@ class HelloController {
         String b64payload = parts[1];
         String jsonString = new String(Base64.getDecoder().decode(b64payload));
      
-        String echo = "Hi " + name + " !";
+        final Map jwtMap = new Gson().fromJson(jsonString, Map.class);
+        String subName = jwtMap.get("name");
+        String n = (subName != null)? subName : name;
+     
+        String echo = "Hi " + n + " !";
         response.put("message", echo);
         return response;
  
