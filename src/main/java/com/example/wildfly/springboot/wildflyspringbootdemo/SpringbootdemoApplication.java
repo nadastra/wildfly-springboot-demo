@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Base64;
 
 // Spring Boot 2.x
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
@@ -31,8 +32,13 @@ public class SpringbootdemoApplication extends SpringBootServletInitializer {
 class HelloController {
  
     @RequestMapping("/hello/{name}")
-    Map<String, Object> hello(@PathVariable String name) {
+    Map<String, Object> hello(@PathVariable String name, @RequestHeader("authorization") String bearer) {
         HashMap<String, Object> response = new HashMap<>();
+     
+        String[] parts = bearer.substring(7).split("\\.");
+        String b64payload = parts[1];
+        String jsonString = new String(Base64.getDecoder().decode(b64payload));
+     
         String echo = "Hi " + name + " !";
         response.put("message", echo);
         return response;
